@@ -63,5 +63,28 @@ notesRouter.route('/')
       .then(() => { res.status(204).end() })
       .catch(next)
     })
+    .patch(jsonParser, (req, res, next) => {
+      const { status, price,comments } = req.body
+      const noteToUpdate = { status, price,comments }
+  
+      const numberOfValues = Object.values(noteToUpdate).filter(Boolean).length
+      if (numberOfValues === 0)
+        return res.status(400).json({
+          error: {
+            message: `Request body must contain either 'status' , 'price' or 'comments'`
+          }
+        })
+  
+        NotesService.updateNote(
+        req.app.get('db'),
+        req.params.note_id,
+        noteToUpdate
+      )
+        .then(numRowsAffected => {
+          res.status(204).end()
+        })
+        .catch(next)
+    })
+  
 
 module.exports = notesRouter;

@@ -22,11 +22,11 @@ const NotesService = {
         .where('id', noteId)
         .delete()
     },
-    // updateNote(knex, noteId, newNoteData) {
-    //   return knex('rental_property_list')
-    //     .where('id', noteId)
-    //     .update(newNoteData)
-    // }
+    updateNote(knex, noteId, newNoteData) {
+      return knex('notebook')
+        .where('id', noteId)
+        .update(newNoteData)
+    }
   }
   
   module.exports = NotesService;
