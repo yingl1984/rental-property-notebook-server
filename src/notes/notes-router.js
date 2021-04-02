@@ -74,7 +74,7 @@ notesRouter.route('/')
             message: `Request body must contain either 'status' , 'price' or 'comments'`
           }
         })
-  
+  console.log(noteToUpdate);
         NotesService.updateNote(
         req.app.get('db'),
         req.params.note_id,
