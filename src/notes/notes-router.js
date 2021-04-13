@@ -69,11 +69,7 @@ notesRouter.route('/')
   
       const numberOfValues = Object.values(noteToUpdate).filter(Boolean).length
       if (numberOfValues === 0)
-        return res.status(400).json({
-          error: {
-            message: `Request body must contain either 'status' , 'price' or 'comments'`
-          }
-        })
+        return res.status(400).send("Nothing is updated");
   console.log(noteToUpdate);
         NotesService.updateNote(
         req.app.get('db'),
