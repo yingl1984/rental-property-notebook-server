@@ -1,12 +1,12 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
-
 require('dotenv').config()
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const notesRouter = require('./notes/notes-router');
+
 const app = express()
 
 const morganOption = (NODE_ENV === 'production')
