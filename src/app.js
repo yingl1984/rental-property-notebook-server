@@ -6,9 +6,8 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV, CLIENT_URL} = require('./config')
 const notesRouter = require('./notes/notes-router');
-
+//Create a Express app
 const app = express()
-
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
